@@ -1,0 +1,55 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="ngx">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>CX POC</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+</head>
+<body>
+  <div class="container">
+    <div ng-view></div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-sanitize.js"></script>
+
+  <script>
+    angular.module('ngx', ['ngRoute'])
+
+    .config(function($locationProvider, $routeProvider) {
+      $locationProvider.html5Mode(true);
+
+      $routeProvider
+      .when('/first', {
+        // controller: 'IndexCtrl',
+        templateUrl: '/partials/1.html'
+      })
+      .when('/alt', {
+        // controller: 'IndexCtrl',
+        templateUrl: '/partials/2.html'
+      })
+      .otherwise({
+        redirectTo: '/first'
+      });
+    })
+
+    .run(function () {
+      console.log('Hello');
+    })
+
+    .controller('IndexCtrl', function () {
+      console.log('IndexCtrl');
+    })
+
+    ;
+
+  </script>
+
+</body>
+</html>
